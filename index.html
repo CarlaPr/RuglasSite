@@ -1,129 +1,504 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUGLASS Vidraçaria</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-
-    <section id="hero" class="secao">
-    <div class="hero-wrapper">
-        <div class="hero-logo">
-            <img src="images/logo.png" alt="Logo da RUGLASS Vidraçaria">
-        </div>
-        <div class="hero-text">
-            <h1>Inovação e Qualidade em Soluções de Vidro.</h1>
-            <p>Seu projeto de vidro, do orçamento à instalação, com a garantia que você precisa.</p>
-            <div class="cta-container">
-                <a href="https://wa.me/5511947965351?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20grátis." target="_blank" class="btn btn-laranja">Solicitar Orçamento Grátis</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="diferenciais" class="secao secao-fundo-claro">
-    <h2>Por Que a Ruglass é a Escolha Certa?</h2>
+    <title>RUGLASS — Vidraçaria</title>
     
-    <div class="servicos-grid">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        'primary-foreground': '#ffffff',
+                        accent: '#2563eb', // Azul moderno para destaque
+                        accentYellow: '#ffd700', // Amarelo moderno para destaque
+                        background: '#ffffff',
+                        foreground: '#0f172a',
+                        muted: '#f1f5f9',
+                        'muted-foreground': '#64748b',
+                        card: '#ffffff',
+                        border: '#e2e8f0',
+                        'section-dark': '#1e293b',
+                        'section-dark-foreground': '#f8fafc',
+                    },
+                    fontFamily: {
+                        heading: ['Inter', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+
+        body { font-family: 'Inter', sans-serif; }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 8rem;
+                padding-bottom: 8rem;
+            }
+        }
+
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4));
+        }
+
+        /* Botões customizados baseados no código original */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .btn-cta {
+            background-color: var(--accent, #2563eb);
+            color: white;
+        }
+        .btn-cta:hover { background-color: #1d4ed8; }
         
-        <div class="diferencial-card">
-            <div class="diferencial-icon">
-                <span>🏅</span> </div>
-            <h3>Qualidade Garantida</h3>
-            <p>Utilizamos apenas materiais de primeira linha e vidro temperado com certificação de segurança.</p>
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+        .btn-outline:hover {
+            background-color: white;
+            color: #0f172a;
+        }
+
+        .btn-sm { padding: 0.5rem 1rem; font-size: 0.875rem; }
+        .btn-lg { padding: 0.75rem 2rem; font-size: 1.125rem; }
+    </style>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-background text-foreground antialiased overflow-x-hidden">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-primary-foreground/10">
+        <div class="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
+            <a href="#inicio" class="text-2xl md:text-3xl font-heading font-black tracking-tight text-primary-foreground">
+                <span class="text-accentYellow">RUGLASS</span>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="#inicio" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Início</a>
+                <a href="#servicos" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Serviços</a>
+                <a href="#porque" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Por que nós</a>
+                <a href="#galeria" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Galeria</a>
+                <a href="#sacadas" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Sacadas</a>
+                <a href="#contato" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Contato</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-3">
+                <a href="#contato" class="btn btn-cta btn-sm">
+                    <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                    Solicitar Orçamento
+                </a>
+            </div>
+
+            <button id="menu-btn" class="lg:hidden text-primary-foreground" aria-label="Menu">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+            </button>
         </div>
 
-        <div class="diferencial-card">
-            <div class="diferencial-icon">
-                <span>⏱️</span> </div>
-            <h3>Pontualidade na Entrega</h3>
-            <p>Respeitamos seu tempo. Nossas equipes cumprem rigorosamente os prazos de instalação combinados.</p>
+        <div id="mobile-menu" class="hidden lg:hidden bg-primary border-t border-primary-foreground/10">
+            <nav class="container mx-auto px-4 py-4 flex flex-col gap-3">
+                <a href="#inicio" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Início</a>
+                <a href="#servicos" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Serviços</a>
+                <a href="#porque" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Por que nós</a>
+                <a href="#galeria" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Galeria</a>
+                <a href="#sacadas" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Sacadas</a>
+                <a href="#contato" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Contato</a>
+                
+                <a href="#contato" class="btn btn-cta btn-sm mt-2 w-full mobile-link">
+                    <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                    Solicitar Orçamento
+                </a>
+            </nav>
         </div>
+    </header>
 
-        <div class="diferencial-card">
-            <div class="diferencial-icon">
-                <span>👥</span> </div>
-            <h3>Atendimento Especializado</h3>
-            <p>Do orçamento à instalação, nossa equipe está pronta para tirar suas dúvidas e encontrar a melhor solução.</p>
-        </div>
+    <main>
+        <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="images/fundo tt.png" alt="Fachada de vidro moderna" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 hero-overlay"></div>
+            </div>
 
-    </div>
-</section>
+            <div class="relative container mx-auto px-4 pt-20 md:pt-0">
+                <div class="max-w-3xl">
 
-    <section id="servicos" class="secao">
-        <h2> Nossos Serviços</h2>
-        <div class="servicos-grid">
-            <div class="card"><h3>Box para Banheiro</h3><p>Instalação profissional e segura de box em vidro temperado, diversos modelos e acabamentos.</p></div>
-            <div class="card"><h3>Espelhos</h3><p>Espelhos sob medida para decoração, academia, banheiro, etc.</p></div>
-            <div class="card"><h3>Fachadas e Vitrines</h3><p>Soluções completas para ambientes comerciais. Durabilidade e estética que valorizam seu negócio.</p></div>
-            <div class="card"><h3>Janelas e Portas em Vidro</h3><p>Esquadrias de vidro e alumínio com modernidade.</p></div>
-        </div>
-    </section>
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-primary-foreground leading-tight mb-6">
+                        Soluções em <br />
+                        <span class="text-accent">Vidros & Esquadrias</span><br />
+                        de Alta Performance
+                    </h1>
 
-    <section id="galeria" class="secao">
-    <h2>Galeria de Projetos</h2>
-    <p style="max-width: 800px; margin: 0 auto 30px auto; font-size: 1.1em;">
-        Conheça alguns dos nossos trabalhos realizados.
-    </p>
+                    <p class="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-xl">
+                        Projetos sob medida com vidros temperados, laminados e esquadrias de alumínio. 
+                        Qualidade, segurança e elegância para sua obra.
+                    </p>
 
-    <div class="galeria-grid">
-        <div class="galeria-item">
-            <img src="images/guardacorpo.jpeg" alt="Projeto de guarda corpo em vidro temperado">
-            <div class="galeria-overlay">
-                <p class="galeria-titulo">Guarda Corpo</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contato" class="btn btn-cta btn-lg">
+                            Solicitar Orçamento Grátis
+                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                        </a>
+                        <a href="#galeria" class="btn btn-outline btn-lg">Ver Projetos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="section-padding bg-background">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <span class="text-accent font-heading font-bold text-sm uppercase tracking-widest">O que fazemos</span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-black text-foreground mt-3">
+                        Nossos Serviços
+                    </h2>
+                    <p class="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                        Oferecemos soluções completas em vidraçaria com materiais e acabamento impecáveis.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
+                            <i data-lucide="layers" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Vidros Temperados</h3>
+                        <p class="text-muted-foreground leading-relaxed">Vidros de alta resistência para segurança e durabilidade em projetos residenciais e comerciais.</p>
+                    </div>
+                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
+                            <i data-lucide="shield" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Vidros Laminados</h3>
+                        <p class="text-muted-foreground leading-relaxed">Proteção máxima com vidros laminados que mantêm a integridade mesmo após impacto.</p>
+                    </div>
+                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
+                            <i data-lucide="home" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Box para Banheiro</h3>
+                        <p class="text-muted-foreground leading-relaxed">Box sob medida, transformando seu banheiro em um espaço sofisticado.</p>
+                    </div>
+                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
+                            <i data-lucide="building-2" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Fachadas de Vidro</h3>
+                        <p class="text-muted-foreground leading-relaxed">Fachadas modernas em vidro que valorizam a estética e a iluminação natural do seu imóvel.</p>
+                    </div>
+                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
+                            <i data-lucide="door-open" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Portas & Janelas</h3>
+                        <p class="text-muted-foreground leading-relaxed">Portas e janelas em vidro e alumínio com design contemporâneo e vedação acústica.</p>
+                    </div>
+                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
+                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
+                            <i data-lucide="maximize" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Espelhos comuns e com Led</h3>
+                        <p class="text-muted-foreground leading-relaxed">Espelhos sob medida e soluções decorativas em vidro para ambientes elegantes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="porque" class="section-padding bg-section-dark text-section-dark-foreground">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-5xl font-heading font-black mt-3 mb-6">
+                            Por que escolher a <span class="text-accentYellow">RUGLASS</span>?
+                        </h2>
+                        <p class="text-section-dark-foreground/70 text-lg mb-8">
+                            Combinamos materiais e mão de obra excelentes
+                            para entregar projetos que superam expectativas.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-section-dark-foreground/80">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-accent flex-shrink-0"></i>
+                                Vidros com certificação de segurança
+                            </li>
+                            <li class="flex items-center gap-3 text-section-dark-foreground/80">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-accent flex-shrink-0"></i>
+                                Orçamento gratuito e sem compromisso
+                            </li>
+                            <li class="flex items-center gap-3 text-section-dark-foreground/80">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-accent flex-shrink-0"></i>
+                                Atendimento personalizado
+                            </li>
+                            <li class="flex items-center gap-3 text-section-dark-foreground/80">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-accent flex-shrink-0"></i>
+                                Projetos residenciais e comerciais
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div class="glass-effect rounded-xl p-6">
+                            <i data-lucide="award" class="w-10 h-10 text-accent mb-4"></i>
+                            <h3 class="font-heading font-bold text-lg mb-2">Atendimento Especializado</h3>
+                            <p class="text-sm text-section-dark-foreground/70">Atendimento personalizado e orientado às necessidades do cliente.</p>
+                        </div>
+                        <div class="glass-effect rounded-xl p-6">
+                            <i data-lucide="wrench" class="w-10 h-10 text-accent mb-4"></i>
+                            <h3 class="font-heading font-bold text-lg mb-2">Equipe Especializada</h3>
+                            <p class="text-sm text-section-dark-foreground/70">Profissionais qualificados.</p>
+                        </div>
+                        <div class="glass-effect rounded-xl p-6">
+                            <i data-lucide="clock" class="w-10 h-10 text-accent mb-4"></i>
+                            <h3 class="font-heading font-bold text-lg mb-2">Pontualidade na Entrega</h3>
+                            <p class="text-sm text-section-dark-foreground/70">Cumprimos prazos com rigor e compromisso.</p>
+                        </div>
+                        <div class="glass-effect rounded-xl p-6">
+                            <i data-lucide="thumbs-up" class="w-10 h-10 text-accent mb-4"></i>
+                            <h3 class="font-heading font-bold text-lg mb-2">Garantia de Qualidade</h3>
+                            <p class="text-sm text-section-dark-foreground/70">Materiais certificados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="section-padding bg-background">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <span class="text-accent font-heading font-bold text-sm uppercase tracking-widest">Portfólio</span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-black text-foreground mt-3">
+                        Galeria de Projetos
+                    </h2>
+                    <p class="text-muted-foreground mt-4 max-w-2xl mx-auto">
+                        Confira alguns dos nossos projetos realizados com excelência e atenção aos detalhes.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
+                        <img src="images/boxx.jpeg" alt="Box para Banheiro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Residencial</span>
+                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Box para Banheiro</h3>
+                        </div>
+                    </div>
+                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
+                        <img src="images/salacomercial.jpeg" alt="Fachada Comercial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Comercial</span>
+                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Sala Comercial</h3>
+                        </div>
+                    </div>
+                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
+                        <img src="images/janela.jpeg" alt="Janelas Piso-Teto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Residencial</span>
+                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Janelas</h3>
+                        </div>
+                    </div>
+                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
+                        <img src="images/espelho.jpeg" alt="Espelho" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Residencial</span>
+                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Espelho</h3>
+                        </div>
+                    </div>
+                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
+                        <img src="images/guardacorpo.jpeg" alt="Guarda-corpo em Vidro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Sacada</span>
+                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Guarda-corpo em Vidro</h3>
+                        </div>
+                    </div>
+                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
+                        <img src="images/sacada1.jpg" alt="Sacada Panorâmica" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Sacada</span>
+                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Sacada</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sacadas" class="section-padding bg-muted">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <span class="text-accent font-heading font-bold text-sm uppercase tracking-widest">Especialidade</span>
+                        <h2 class="text-3xl md:text-5xl font-heading font-black text-foreground mt-3 mb-6">
+                            Envidraçamento de Sacadas
+                        </h2>
+                        <p class="text-muted-foreground text-lg mb-8">
+                            Transforme sua sacada em um espaço funcional e elegante. 
+                            Nossos sistemas de envidraçamento oferecem conforto, segurança e uma vista panorâmica sem obstruções.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
+                                <span class="text-foreground text-sm">Vidro temperado de 8mm ou 10mm</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
+                                <span class="text-foreground text-sm">Perfis em alumínio de alta resistência</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
+                                <span class="text-foreground text-sm">Sistema de correr ou fixo</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
+                                <span class="text-foreground text-sm">Proteção contra chuva e vento</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
+                                <span class="text-foreground text-sm">Redução de ruído externo</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
+                                <span class="text-foreground text-sm">Valorização do imóvel</span>
+                            </div>
+                        </div>
+                        <a href="#contato" class="btn btn-cta btn-lg">
+                            Quero envidraçar minha sacada
+                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                        </a>
+                    </div>
+
+                    <div class="order-1 lg:order-2">
+                        <div class="rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="images/sacada2.png" alt="Sacada envidraçada com vista panorâmica" class="w-full h-[400px] lg:h-[500px] object-cover" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="section-padding bg-section-dark text-section-dark-foreground">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <span class="text-accentYellow font-heading font-bold text-sm uppercase tracking-widest">Fale Conosco</span>
+                    <h2 class="text-3xl md:text-5xl font-heading font-black mt-3 mb-6">
+                        Solicite seu <span class="text-accentYellow">orçamento gratuito</span>
+                    </h2>
+                    <p class="text-section-dark-foreground/70 text-lg mb-10">
+                        Entre em contato agora e transforme seu projeto em realidade. 
+                        Nossa equipe está pronta para atender você com agilidade e profissionalismo.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                        <a href="https://wa.me/5511947965351?text=Olá!%20Tenho%20interesse%20nos%20serviços%20da%20Ruglass." target="_blank" rel="noopener noreferrer" class="btn btn-cta btn-lg">
+                            <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
+                            Chamar no WhatsApp
+                        </a>
+                        <a href="mailto:ruglassvidracaria@gmail.com" class="btn btn-outline btn-lg">
+                            Enviar E-mail
+                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="glass-effect rounded-xl p-5">
+                            <p class="text-accent font-heading font-bold text-sm mb-1">Telefone</p>
+                            <p class="text-section-dark-foreground/80 break-words">(11) 94796-5351</p>
+                        </div>
+                        <div class="glass-effect rounded-xl p-5">
+                            <p class="text-accent font-heading font-bold text-sm mb-1">E-mail</p>
+                            <p class="text-section-dark-foreground/80 break-words">ruglassvidracaria@gmail.com</p>
+                        </div>
+                        <div class="glass-effect rounded-xl p-5">
+                            <p class="text-accent font-heading font-bold text-sm mb-1">Horário</p>
+                            <p class="text-section-dark-foreground/80 break-words">Seg - Sex: 8h às 18h<br>Sab: 8h às 16h</p>
+                        </div>
+                        <div class="glass-effect rounded-xl p-5">
+                            <p class="text-accent font-heading font-bold text-sm mb-1">Localização</p>
+                            <p class="text-section-dark-foreground/80 break-words">R. Cantagalo, 2430 - Tatuapé, São Paulo - SP</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-center">
+                        <a href="https://www.instagram.com/ruglass.vidracaria?igsh=MTR4N2k3b2JkbGNncw==" target="_blank" class="inline-flex items-center gap-2 text-section-dark-foreground/80 hover:text-accent font-medium transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                            Siga nosso Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-primary py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <a href="#inicio" class="text-2xl font-heading font-black text-primary-foreground">
+                    <span class="text-accentYellow">RUGLASS</span>
+                </a>
+                <p class="text-primary-foreground/60 text-sm text-center">
+                    &copy; <span id="year"></span> RUGLASS — Todos os direitos reservados.
+                </p>
             </div>
         </div>
-
-        <div class="galeria-item">
-            <img src="images/armario.jpeg" alt="Projeto de armario de cozinha em vidro">
-            <div class="galeria-overlay">
-                <p class="galeria-titulo">Armário de Cozinha</p>
-            </div>
-        </div>
-
-        <div class="galeria-item">
-            <img src="images/cozinha.jpeg" alt="Projeto de armario de lavanderia em vidro">
-            <div class="galeria-overlay">
-                <p class="galeria-titulo">Armário de Lavanderia</p>
-            </div>
-        </div>
-
-        <div class="galeria-item">
-            <img src="images/box.jpeg" alt="Projeto de box de vidro temperado para banheiro">
-            <div class="galeria-overlay">
-                <p class="galeria-titulo">Box de Vidro Temperado</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <section id="contato" class="secao">
-        <h2>Pronto para Dar Vida ao Seu Projeto?</h2>
-        <div class="cta-container" style="margin-bottom: 30px;">
-             <a href="https://wa.me/5511947965351?text=Olá!%20Tenho%20interesse%20nos%20serviços%20da%20Ruglass." target="_blank" class="btn btn-laranja">Fale Conosco Agora!</a>
-        </div>
-        <div class="contato-bloco">
-            <p>&#9993; E-mail: ruglass@gmail.com</p>
-            <p>&#128205; Atendemos toda a grande São Paulo.</p>
-        </div>
-    </section>
-
-    <footer id="footer">
-        <div class="footer-contato">
-            <p><strong>RUGLASS Vidraçaria</strong></p>
-            <p>R. Cantagalo, 2430 - Tatuapé, São Paulo - SP</p>
-        </div>
-        <div class="footer-sociais" style="margin-top: 10px;">
-            <a href="https://www.instagram.com/ruglass.vidracaria?igsh=MTR4N2k3b2JkbGNncw==" target="_blank">Instagram</a> |
-            <a href="https://wa.me/5511947965351" target="_blank">WhatsApp</a>
-        </div>
-        <p style="margin-top: 15px;">&copy; 2025 RUGLASS. Todos os direitos reservados.</p>
     </footer>
 
-</div>
+    <script>
+        // Inicializar ícones do Lucide
+        lucide.createIcons();
 
+        // Colocar ano atual no footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Menu Mobile Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            mobileMenu.classList.toggle('hidden');
+            
+            // Troca o ícone de menu para "X" (fechar) e vice-versa
+            if(isMenuOpen) {
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // Fecha o menu ao clicar num link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(isMenuOpen) toggleMenu();
+            });
+        });
+    </script>
 </body>
 </html>
