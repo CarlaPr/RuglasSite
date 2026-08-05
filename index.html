@@ -3,502 +3,1441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUGLASS — Vidraçaria</title>
-    
+    <title>RUGLASS — Envidraçamento de Sacadas & Manutenção</title>
+    <meta name="description" content="Especialistas em envidraçamento e manutenção de sacadas em São Paulo. Orçamento gratuito.">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0f172a',
-                        'primary-foreground': '#ffffff',
-                        accent: '#2563eb', // Azul moderno para destaque
-                        accentYellow: '#ffd700', // Amarelo moderno para destaque
-                        background: '#ffffff',
-                        foreground: '#0f172a',
-                        muted: '#f1f5f9',
-                        'muted-foreground': '#64748b',
-                        card: '#ffffff',
-                        border: '#e2e8f0',
-                        'section-dark': '#1e293b',
-                        'section-dark-foreground': '#f8fafc',
+                        primary:     '#0A1628',
+                        accent:      '#1E5FC2',
+                        gold:        '#E8A020',
+                        light:       '#F7F9FC',
+                        mid:         '#E2E8F0',
+                        body:        '#3D4A5C',
                     },
                     fontFamily: {
-                        heading: ['Inter', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                        body:    ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
-
-        body { font-family: 'Inter', sans-serif; }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .section-padding {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
-        }
-
-        @media (min-width: 768px) {
-            .section-padding {
-                padding-top: 8rem;
-                padding-bottom: 8rem;
-            }
-        }
-
-        .hero-overlay {
-            background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4));
-        }
-
-        /* Botões customizados baseados no código original */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        .btn-cta {
-            background-color: var(--accent, #2563eb);
-            color: white;
-        }
-        .btn-cta:hover { background-color: #1d4ed8; }
-        
-        .btn-outline {
-            border: 2px solid white;
-            color: white;
-        }
-        .btn-outline:hover {
-            background-color: white;
-            color: #0f172a;
-        }
-
-        .btn-sm { padding: 0.5rem 1rem; font-size: 0.875rem; }
-        .btn-lg { padding: 0.75rem 2rem; font-size: 1.125rem; }
-    </style>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-background text-foreground antialiased overflow-x-hidden">
+<body class="bg-white text-body antialiased overflow-x-hidden">
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-primary-foreground/10">
-        <div class="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
-            <a href="#inicio" class="text-2xl md:text-3xl font-heading font-black tracking-tight text-primary-foreground">
-                <span class="text-accentYellow">RUGLASS</span>
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="rg-container flex items-center justify-between h-16 md:h-20">
+        <a href="#inicio" class="flex items-center gap-2">
+            <span class="rg-logo">RU<span>GLASS</span></span>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-8">
+            <a href="#inicio"      class="rg-nav-link">Início</a>
+            <a href="#sacadas"     class="rg-nav-link">Envidraçamento</a>
+            <a href="#diferenciais" class="rg-nav-link">Por que nós</a>
+            <a href="#galeria"     class="rg-nav-link">Galeria</a>
+            <a href="#manutencao"  class="rg-nav-link">Manutenção</a>
+        </nav>
+
+        <div class="hidden lg:flex">
+            <a href="https://wa.me/5511947965351?text=Olá!%20Quero%20um%20orçamento%20da%20Ruglass."
+               target="_blank" rel="noopener noreferrer" class="rg-btn-primary">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                Orçamento Grátis
             </a>
-
-            <nav class="hidden lg:flex items-center gap-8">
-                <a href="#inicio" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Início</a>
-                <a href="#servicos" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Serviços</a>
-                <a href="#porque" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Por que nós</a>
-                <a href="#galeria" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Galeria</a>
-                <a href="#sacadas" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Sacadas</a>
-                <a href="#contato" class="text-sm font-heading font-medium text-primary-foreground/80 hover:text-accent transition-colors">Contato</a>
-            </nav>
-
-            <div class="hidden lg:flex items-center gap-3">
-                <a href="#contato" class="btn btn-cta btn-sm">
-                    <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
-                    Solicitar Orçamento
-                </a>
-            </div>
-
-            <button id="menu-btn" class="lg:hidden text-primary-foreground" aria-label="Menu">
-                <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
-            </button>
         </div>
 
-        <div id="mobile-menu" class="hidden lg:hidden bg-primary border-t border-primary-foreground/10">
-            <nav class="container mx-auto px-4 py-4 flex flex-col gap-3">
-                <a href="#inicio" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Início</a>
-                <a href="#servicos" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Serviços</a>
-                <a href="#porque" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Por que nós</a>
-                <a href="#galeria" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Galeria</a>
-                <a href="#sacadas" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Sacadas</a>
-                <a href="#contato" class="mobile-link text-primary-foreground/80 hover:text-accent font-heading font-medium py-2 transition-colors">Contato</a>
-                
-                <a href="#contato" class="btn btn-cta btn-sm mt-2 w-full mobile-link">
-                    <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
-                    Solicitar Orçamento
-                </a>
-            </nav>
+        <button id="menu-btn" class="lg:hidden rg-menu-btn" aria-label="Menu">
+            <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+        </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden rg-mobile-menu">
+        <nav class="rg-container py-5 flex flex-col gap-1">
+            <a href="#inicio"       class="mobile-link rg-mobile-link">Início</a>
+            <a href="#sacadas"      class="mobile-link rg-mobile-link">Envidraçamento de Sacadas</a>
+            <a href="#manutencao"   class="mobile-link rg-mobile-link">Manutenção</a>
+            <a href="#diferenciais" class="mobile-link rg-mobile-link">Por que nós</a>
+            <a href="#galeria"      class="mobile-link rg-mobile-link">Galeria</a>
+            <a href="https://wa.me/5511947965351?text=Olá!%20Quero%20um%20orçamento%20da%20Ruglass."
+               target="_blank" rel="noopener noreferrer"
+               class="mobile-link rg-btn-primary mt-3 justify-center">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                Orçamento Grátis
+            </a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section id="inicio" class="rg-hero">
+        <div class="absolute inset-0">
+            <img src="images/fundo tt.png" alt="Sacada envidraçada com vista panorâmica"
+                 class="w-full h-full object-cover" />
+            <div class="rg-hero-overlay"></div>
         </div>
-    </header>
 
-    <main>
-        <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
-            <div class="absolute inset-0">
-                <img src="images/fundo tt.png" alt="Fachada de vidro moderna" class="w-full h-full object-cover" />
-                <div class="absolute inset-0 hero-overlay"></div>
-            </div>
+        <div class="relative rg-container pt-24 pb-16 md:pt-32 md:pb-24 flex flex-col justify-center min-h-screen">
+            <div class="max-w-2xl">
+                <p class="rg-eyebrow mb-4">Especialistas em vidraçaria — São Paulo</p>
 
-            <div class="relative container mx-auto px-4 pt-20 md:pt-0">
-                <div class="max-w-3xl">
+                <h1 class="rg-hero-title">
+                    Sacada envidraçada.<br>
+                    <span class="rg-hero-accent">Conforto e elegância</span><br>
+                    que duram anos.
+                </h1>
 
-                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-primary-foreground leading-tight mb-6">
-                        Soluções em <br />
-                        <span class="text-accent">Vidros & Esquadrias</span><br />
-                        de Alta Performance
-                    </h1>
+                <p class="rg-hero-sub mt-6 mb-10">
+                    Instalamos envidraçamentos de sacada e realizamos manutenções de mola de chão,
+                    fechamentos e acessórios com agilidade e garantia de serviço.
+                </p>
 
-                    <p class="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-xl">
-                        Projetos sob medida com vidros temperados, laminados e esquadrias de alumínio. 
-                        Qualidade, segurança e elegância para sua obra.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#contato" class="btn btn-cta btn-lg">
-                            Solicitar Orçamento Grátis
-                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
-                        </a>
-                        <a href="#galeria" class="btn btn-outline btn-lg">Ver Projetos</a>
-                    </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://wa.me/5511947965351?text=Olá!%20Quero%20um%20orçamento%20da%20Ruglass."
+                       target="_blank" rel="noopener noreferrer" class="rg-btn-primary rg-btn-lg">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        Falar no WhatsApp
+                    </a>
+                    <a href="#sacadas" class="rg-btn-outline rg-btn-lg">
+                        Ver serviços
+                        <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                    </a>
                 </div>
             </div>
-        </section>
 
-        <section id="servicos" class="section-padding bg-background">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <span class="text-accent font-heading font-bold text-sm uppercase tracking-widest">O que fazemos</span>
-                    <h2 class="text-3xl md:text-5xl font-heading font-black text-foreground mt-3">
-                        Nossos Serviços
-                    </h2>
-                    <p class="text-muted-foreground mt-4 max-w-2xl mx-auto">
-                        Oferecemos soluções completas em vidraçaria com materiais e acabamento impecáveis.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
-                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
-                            <i data-lucide="layers" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
+            <div class="absolute bottom-8 left-0 right-0">
+                <div class="rg-container">
+                    <div class="rg-trust-bar">
+                        <div class="rg-trust-item">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-gold"></i>
+                            <span>Garantia no serviço</span>
                         </div>
-                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Vidros Temperados</h3>
-                        <p class="text-muted-foreground leading-relaxed">Vidros de alta resistência para segurança e durabilidade em projetos residenciais e comerciais.</p>
-                    </div>
-                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
-                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
-                            <i data-lucide="shield" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
+                        <div class="rg-trust-divider"></div>
+                        <div class="rg-trust-item">
+                            <i data-lucide="clock" class="w-5 h-5 text-gold"></i>
+                            <span>Atendimento ágil</span>
                         </div>
-                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Vidros Laminados</h3>
-                        <p class="text-muted-foreground leading-relaxed">Proteção máxima com vidros laminados que mantêm a integridade mesmo após impacto.</p>
-                    </div>
-                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
-                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
-                            <i data-lucide="home" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
+                        <div class="rg-trust-divider"></div>
+                        <div class="rg-trust-item">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-gold"></i>
+                            <span>Tatuapé – SP</span>
                         </div>
-                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Box para Banheiro</h3>
-                        <p class="text-muted-foreground leading-relaxed">Box sob medida, transformando seu banheiro em um espaço sofisticado.</p>
-                    </div>
-                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
-                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
-                            <i data-lucide="building-2" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
-                        </div>
-                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Fachadas de Vidro</h3>
-                        <p class="text-muted-foreground leading-relaxed">Fachadas modernas em vidro que valorizam a estética e a iluminação natural do seu imóvel.</p>
-                    </div>
-                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
-                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
-                            <i data-lucide="door-open" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
-                        </div>
-                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Portas & Janelas</h3>
-                        <p class="text-muted-foreground leading-relaxed">Portas e janelas em vidro e alumínio com design contemporâneo e vedação acústica.</p>
-                    </div>
-                    <div class="group bg-card rounded-xl p-8 border border-border hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300">
-                        <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
-                            <i data-lucide="maximize" class="w-7 h-7 text-primary group-hover:text-accent transition-colors"></i>
-                        </div>
-                        <h3 class="text-xl font-heading font-bold text-foreground mb-3">Espelhos comuns e com Led</h3>
-                        <p class="text-muted-foreground leading-relaxed">Espelhos sob medida e soluções decorativas em vidro para ambientes elegantes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="porque" class="section-padding bg-section-dark text-section-dark-foreground">
-            <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <h2 class="text-3xl md:text-5xl font-heading font-black mt-3 mb-6">
-                            Por que escolher a <span class="text-accentYellow">RUGLASS</span>?
-                        </h2>
-                        <p class="text-section-dark-foreground/70 text-lg mb-8">
-                            Combinamos materiais e mão de obra excelentes
-                            para entregar projetos que superam expectativas.
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-center gap-3 text-section-dark-foreground/80">
-                                <i data-lucide="check-circle-2" class="w-5 h-5 text-accent flex-shrink-0"></i>
-                                Vidros com certificação de segurança
-                            </li>
-                            <li class="flex items-center gap-3 text-section-dark-foreground/80">
-                                <i data-lucide="check-circle-2" class="w-5 h-5 text-accent flex-shrink-0"></i>
-                                Orçamento gratuito e sem compromisso
-                            </li>
-                            <li class="flex items-center gap-3 text-section-dark-foreground/80">
-                                <i data-lucide="check-circle-2" class="w-5 h-5 text-accent flex-shrink-0"></i>
-                                Atendimento personalizado
-                            </li>
-                            <li class="flex items-center gap-3 text-section-dark-foreground/80">
-                                <i data-lucide="check-circle-2" class="w-5 h-5 text-accent flex-shrink-0"></i>
-                                Projetos residenciais e comerciais
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        <div class="glass-effect rounded-xl p-6">
-                            <i data-lucide="award" class="w-10 h-10 text-accent mb-4"></i>
-                            <h3 class="font-heading font-bold text-lg mb-2">Atendimento Especializado</h3>
-                            <p class="text-sm text-section-dark-foreground/70">Atendimento personalizado e orientado às necessidades do cliente.</p>
-                        </div>
-                        <div class="glass-effect rounded-xl p-6">
-                            <i data-lucide="wrench" class="w-10 h-10 text-accent mb-4"></i>
-                            <h3 class="font-heading font-bold text-lg mb-2">Equipe Especializada</h3>
-                            <p class="text-sm text-section-dark-foreground/70">Profissionais qualificados.</p>
-                        </div>
-                        <div class="glass-effect rounded-xl p-6">
-                            <i data-lucide="clock" class="w-10 h-10 text-accent mb-4"></i>
-                            <h3 class="font-heading font-bold text-lg mb-2">Pontualidade na Entrega</h3>
-                            <p class="text-sm text-section-dark-foreground/70">Cumprimos prazos com rigor e compromisso.</p>
-                        </div>
-                        <div class="glass-effect rounded-xl p-6">
-                            <i data-lucide="thumbs-up" class="w-10 h-10 text-accent mb-4"></i>
-                            <h3 class="font-heading font-bold text-lg mb-2">Garantia de Qualidade</h3>
-                            <p class="text-sm text-section-dark-foreground/70">Materiais certificados.</p>
+                        <div class="rg-trust-divider"></div>
+                        <div class="rg-trust-item">
+                            <i data-lucide="tag" class="w-5 h-5 text-gold"></i>
+                            <span>Orçamento gratuito</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="galeria" class="section-padding bg-background">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <span class="text-accent font-heading font-bold text-sm uppercase tracking-widest">Portfólio</span>
-                    <h2 class="text-3xl md:text-5xl font-heading font-black text-foreground mt-3">
-                        Galeria de Projetos
-                    </h2>
-                    <p class="text-muted-foreground mt-4 max-w-2xl mx-auto">
-                        Confira alguns dos nossos projetos realizados com excelência e atenção aos detalhes.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
-                        <img src="images/boxx.jpeg" alt="Box para Banheiro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Residencial</span>
-                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Box para Banheiro</h3>
-                        </div>
-                    </div>
-                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
-                        <img src="images/salacomercial.jpeg" alt="Fachada Comercial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Comercial</span>
-                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Sala Comercial</h3>
-                        </div>
-                    </div>
-                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
-                        <img src="images/janela.jpeg" alt="Janelas Piso-Teto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Residencial</span>
-                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Janelas</h3>
-                        </div>
-                    </div>
-                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
-                        <img src="images/espelho.jpeg" alt="Espelho" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Residencial</span>
-                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Espelho</h3>
-                        </div>
-                    </div>
-                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
-                        <img src="images/guardacorpo.jpeg" alt="Guarda-corpo em Vidro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Sacada</span>
-                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Guarda-corpo em Vidro</h3>
-                        </div>
-                    </div>
-                    <div class="group relative rounded-xl overflow-hidden aspect-square cursor-pointer">
-                        <img src="images/sacada1.jpg" alt="Sacada Panorâmica" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider">Sacada</span>
-                            <h3 class="text-primary-foreground font-heading font-bold text-xl mt-1">Sacada</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="sacadas" class="section-padding bg-muted">
-            <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="order-2 lg:order-1">
-                        <span class="text-accent font-heading font-bold text-sm uppercase tracking-widest">Especialidade</span>
-                        <h2 class="text-3xl md:text-5xl font-heading font-black text-foreground mt-3 mb-6">
-                            Envidraçamento de Sacadas
-                        </h2>
-                        <p class="text-muted-foreground text-lg mb-8">
-                            Transforme sua sacada em um espaço funcional e elegante. 
-                            Nossos sistemas de envidraçamento oferecem conforto, segurança e uma vista panorâmica sem obstruções.
-                        </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
-                                <span class="text-foreground text-sm">Vidro temperado de 8mm ou 10mm</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
-                                <span class="text-foreground text-sm">Perfis em alumínio de alta resistência</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
-                                <span class="text-foreground text-sm">Sistema de correr ou fixo</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
-                                <span class="text-foreground text-sm">Proteção contra chuva e vento</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
-                                <span class="text-foreground text-sm">Redução de ruído externo</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="check" class="w-5 h-5 text-accent flex-shrink-0"></i>
-                                <span class="text-foreground text-sm">Valorização do imóvel</span>
-                            </div>
-                        </div>
-                        <a href="#contato" class="btn btn-cta btn-lg">
-                            Quero envidraçar minha sacada
-                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
-                        </a>
-                    </div>
-
-                    <div class="order-1 lg:order-2">
-                        <div class="rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="images/sacada2.png" alt="Sacada envidraçada com vista panorâmica" class="w-full h-[400px] lg:h-[500px] object-cover" loading="lazy" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contato" class="section-padding bg-section-dark text-section-dark-foreground">
-            <div class="container mx-auto px-4">
-                <div class="max-w-3xl mx-auto text-center">
-                    <span class="text-accentYellow font-heading font-bold text-sm uppercase tracking-widest">Fale Conosco</span>
-                    <h2 class="text-3xl md:text-5xl font-heading font-black mt-3 mb-6">
-                        Solicite seu <span class="text-accentYellow">orçamento gratuito</span>
-                    </h2>
-                    <p class="text-section-dark-foreground/70 text-lg mb-10">
-                        Entre em contato agora e transforme seu projeto em realidade. 
-                        Nossa equipe está pronta para atender você com agilidade e profissionalismo.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                        <a href="https://wa.me/5511947965351?text=Olá!%20Tenho%20interesse%20nos%20serviços%20da%20Ruglass." target="_blank" rel="noopener noreferrer" class="btn btn-cta btn-lg">
-                            <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
-                            Chamar no WhatsApp
-                        </a>
-                        <a href="mailto:ruglassvidracaria@gmail.com" class="btn btn-outline btn-lg">
-                            Enviar E-mail
-                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
-                        </a>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="glass-effect rounded-xl p-5">
-                            <p class="text-accent font-heading font-bold text-sm mb-1">Telefone</p>
-                            <p class="text-section-dark-foreground/80 break-words">(11) 94796-5351</p>
-                        </div>
-                        <div class="glass-effect rounded-xl p-5">
-                            <p class="text-accent font-heading font-bold text-sm mb-1">E-mail</p>
-                            <p class="text-section-dark-foreground/80 break-words">ruglassvidracaria@gmail.com</p>
-                        </div>
-                        <div class="glass-effect rounded-xl p-5">
-                            <p class="text-accent font-heading font-bold text-sm mb-1">Horário</p>
-                            <p class="text-section-dark-foreground/80 break-words">Seg - Sex: 8h às 18h<br>Sab: 8h às 16h</p>
-                        </div>
-                        <div class="glass-effect rounded-xl p-5">
-                            <p class="text-accent font-heading font-bold text-sm mb-1">Localização</p>
-                            <p class="text-section-dark-foreground/80 break-words">R. Cantagalo, 2430 - Tatuapé, São Paulo - SP</p>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 flex justify-center">
-                        <a href="https://www.instagram.com/ruglass.vidracaria?igsh=MTR4N2k3b2JkbGNncw==" target="_blank" class="inline-flex items-center gap-2 text-section-dark-foreground/80 hover:text-accent font-medium transition-colors">
-                            <i data-lucide="instagram" class="w-5 h-5"></i>
-                            Siga nosso Instagram
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-primary py-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                <a href="#inicio" class="text-2xl font-heading font-black text-primary-foreground">
-                    <span class="text-accentYellow">RUGLASS</span>
-                </a>
-                <p class="text-primary-foreground/60 text-sm text-center">
-                    &copy; <span id="year"></span> RUGLASS — Todos os direitos reservados.
+    <section id="sacadas" class="rg-section bg-white">
+        <div class="rg-container">
+            <div class="rg-section-header">
+                <p class="rg-eyebrow-dark">Serviço Principal</p>
+                <h2 class="rg-section-title">Envidraçamento de Sacadas</h2>
+                <p class="rg-section-sub">
+                    Transformamos sua sacada num espaço protegido e sofisticado,
+                    sem perder a vista e sem obras invasivas.
                 </p>
             </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div class="rg-service-card">
+                    <div class="rg-service-icon">
+                        <i data-lucide="move-horizontal" class="w-6 h-6"></i>
+                    </div>
+                    <h3>Sistema de Correr</h3>
+                    <p>Painéis que deslizam sobre trilhos, ideais para sacadas amplas.
+                        Abertura total ou parcial conforme o clima.</p>
+                    <ul class="rg-checklist">
+                        <li>Vidro temperado ou laminado 8 mm ou 10 mm</li>
+                        <li>Perfis em alumínio</li>
+                        <li>Trilho superior e inferior embutíveis</li>
+                    </ul>
+                </div>
+
+                <div class="rg-service-card">
+                    <div class="rg-service-icon">
+                        <i data-lucide="layout-panel-left" class="w-6 h-6"></i>
+                    </div>
+                    <h3>Sistema Fixo (Gradeado)</h3>
+                    <p>Fechamento permanente com máxima vedação acústica e térmica.
+                        Ideal para quem busca isolamento contínuo.</p>
+                    <ul class="rg-checklist">
+                        <li>Estrutura em alumínio</li>
+                        <li>Caixilhos com vedação em borracha</li>
+                        <li>Opções com persiana integrada</li>
+                    </ul>
+                </div>
+
+                <div class="rg-service-card">
+                    <div class="rg-service-icon">
+                        <i data-lucide="refresh-cw" class="w-6 h-6"></i>
+                    </div>
+                    <h3>Guarda-Corpo em Vidro</h3>
+                    <p>Substituição ou instalação de guarda-corpo em vidro laminado
+                        com ou sem estrutura metálica aparente.</p>
+                    <ul class="rg-checklist">
+                        <li>Vidro laminado de segurança</li>
+                        <li>Fixação</li>
+                        <li>Normas ABNT NBR 7199</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rg-benefits-strip">
+
+                <div class="rg-benefit">
+                    <div class="rg-benefit-icon">
+                        <i data-lucide="panels-top-left" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <div>
+                        <strong>Sistema Stanley (Cortina de Vidro)</strong>
+                        <p>
+                            Trilhos paralelos permitem que os painéis de vidro deslizem
+                            e se empilhem uns sobre os outros, proporcionando grande
+                            abertura da sacada.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rg-benefit">
+                    <div class="rg-benefit-icon">
+                        <i data-lucide="move-horizontal" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <div>
+                        <strong>Sistema Reiki</strong>
+                        <p>
+                            Os painéis deslizam pela estrutura, permitindo abertura
+                            total, parcial ou fechamento completo da sacada.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rg-benefit">
+                    <div class="rg-benefit-icon">
+                        <i data-lucide="align-horizontal-justify-center" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <div>
+                        <strong>Sistema Europeu</strong>
+                        <p>
+                            As folhas ficam alinhadas, proporcionando um visual mais
+                            limpo e moderno, sem esquadrias verticais aparentes.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rg-benefit">
+                    <div class="rg-benefit-icon">
+                        <i data-lucide="panel-right-open" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <div>
+                        <strong>Sistema Versatik</strong>
+                        <p>
+                            Os painéis deslizam com facilidade, permitindo abrir
+                            até dois terços da sacada.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="https://wa.me/5511947965351?text=Olá!%20Quero%20orçamento%20para%20envidraçamento%20de%20sacada."
+                   target="_blank" rel="noopener noreferrer" class="rg-btn-primary rg-btn-lg">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Solicitar orçamento para sacada
+                </a>
+            </div>
         </div>
-    </footer>
+    </section>
+    
+    <section id="diferenciais" class="rg-section bg-primary text-white">
+        <div class="rg-container">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="rg-eyebrow mb-4">Nosso compromisso</p>
+                    <h2 class="text-3xl md:text-5xl font-display font-black leading-tight mb-6">
+                        Por que escolher<br>a <span class="text-gold">RUGLASS</span>?
+                    </h2>
+                    <p class="text-white/70 text-lg mb-8 leading-relaxed">
+                        Somos uma equipe especializada em sacadas e manutenções.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-gold mt-0.5 flex-shrink-0"></i>
+                            <span class="text-white/80">Diagnóstico gratuito presencial, sem compromisso</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-gold mt-0.5 flex-shrink-0"></i>
+                            <span class="text-white/80">Materiais com procedência e certificação de qualidade</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-gold mt-0.5 flex-shrink-0"></i>
+                            <span class="text-white/80">Atendimento residencial e condominial em São Paulo</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-gold mt-0.5 flex-shrink-0"></i>
+                            <span class="text-white/80">Prazos cumpridos e limpeza do local após o serviço</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-gold mt-0.5 flex-shrink-0"></i>
+                            <span class="text-white/80">Atendimento de emergência para situações urgentes</span>
+                        </li>
+                    </ul>
+                </div>
 
-    <script>
-        // Inicializar ícones do Lucide
-        lucide.createIcons();
-
-        // Colocar ano atual no footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Menu Mobile Toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        let isMenuOpen = false;
-
-        function toggleMenu() {
-            isMenuOpen = !isMenuOpen;
-            mobileMenu.classList.toggle('hidden');
+                <div class="grid grid-cols-2 gap-5">
+                    <div class="rg-diff-card">
+                        <i data-lucide="award" class="w-9 h-9 text-gold mb-4"></i>
+                        <h3 class="font-display font-bold text-lg mb-1">Especialistas</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">Foco total em sacadas e manutenção.</p>
+                    </div>
+                    <div class="rg-diff-card">
+                        <i data-lucide="zap" class="w-9 h-9 text-gold mb-4"></i>
+                        <h3 class="font-display font-bold text-lg mb-1">Agilidade</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">Orçamento e serviços executados sem enrolação.</p>
+                    </div>
+                    <div class="rg-diff-card">
+                        <i data-lucide="shield" class="w-9 h-9 text-gold mb-4"></i>
+                        <h3 class="font-display font-bold text-lg mb-1">Garantia</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">Todo serviço entregue com garantia e suporte pós-instalação.</p>
+                    </div>
+                    <div class="rg-diff-card">
+                        <i data-lucide="smile" class="w-9 h-9 text-gold mb-4"></i>
+                        <h3 class="font-display font-bold text-lg mb-1">Transparência</h3>
+                        <p class="text-white/60 text-sm leading-relaxed">Preço justo, sem surpresas na hora da cobrança.</p>
+                    </div>
+                </div>
             
-            // Troca o ícone de menu para "X" (fechar) e vice-versa
-            if(isMenuOpen) {
-                menuIcon.setAttribute('data-lucide', 'x');
-            } else {
-                menuIcon.setAttribute('data-lucide', 'menu');
-            }
-            lucide.createIcons();
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="rg-section bg-white">
+        <div class="rg-container">
+
+            <div class="rg-section-header">
+                <p class="rg-eyebrow-dark">Nosso trabalho</p>
+
+                <h2 class="rg-section-title">
+                    Projetos realizados
+                </h2>
+
+                <p class="rg-section-sub">
+                    Confira alguns dos nossos trabalhos em envidraçamento,
+                    instalações e soluções em vidro.
+                </p>
+            </div>
+
+            <div class="rg-gallery">
+                <div class="rg-gallery-item rg-gallery-item--horizontal">
+                    <img
+                        src="images/sacada2.png"
+                        alt="Envidraçamento de sacada"
+                        loading="lazy"
+                    />
+
+                    <div class="rg-gallery-overlay">
+                        <span class="rg-gallery-tag">Projeto</span>
+                        <h3>Envidraçamento de Sacada</h3>
+                    </div>
+                </div>
+
+                <div class="rg-gallery-item rg-gallery-item--vertical">
+                    <img
+                        src="images/sacada1.jpg"
+                        alt="Sacada envidraçada"
+                        loading="lazy"
+                    />
+
+                    <div class="rg-gallery-overlay">
+                        <span class="rg-gallery-tag">Projeto</span>
+                        <h3>Envidraçamento de Sacada</h3>
+                    </div>
+                </div>
+
+                <div class="rg-gallery-item rg-gallery-item--video-vertical">
+                    <video
+                        controls
+                        playsinline
+                        preload="metadata"
+                        poster="images/video-vertical-capa.jpeg"
+                    >
+                        <source
+                            src="videos/sacadav1.mp4"
+                            type="video/mp4"
+                        >
+
+                        Seu navegador não suporta vídeos.
+                    </video>
+
+                    <div class="rg-gallery-overlay">
+                        <span class="rg-gallery-tag">Vídeo</span>
+                        <h3>Envidraçamento em detalhes</h3>
+                    </div>
+                </div>
+
+                <div class="rg-gallery-item rg-gallery-item--video-horizontal">
+                    <video
+                        controls
+                        playsinline
+                        preload="metadata"
+                        poster="images/video-horizontal-capa.jpeg"
+                    >
+                        <source
+                            src="videos/sacadav2.mp4"
+                            type="video/mp4"
+                        >
+
+                        Seu navegador não suporta vídeos.
+                    </video>
+                    <div class="rg-gallery-overlay">
+                        <span class="rg-gallery-tag">Vídeo</span>
+                        <h3>Envidraçamento em detalhes</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="manutencao" class="rg-section bg-light">
+        <div class="rg-container">
+            <div class="rg-section-header">
+                <p class="rg-eyebrow-dark">Manutenção Especializada</p>
+                <h2 class="rg-section-title">Reparos que resolvem de verdade</h2>
+                <p class="rg-section-sub">
+                    Seu fechamento rangendo, travando ou com mola quebrada?
+                    Atendemos com diagnóstico rápido e peças de qualidade.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <div class="rg-maint-card">
+                    <div class="flex items-start gap-5">
+                        <div class="rg-maint-icon">
+                            <i data-lucide="wrench" class="w-8 h-8"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="rg-maint-title">Manutenção de Fechamento de Sacada</h3>
+                            <p class="rg-maint-desc">
+                                Fechamentos de sacada podem acumular desgaste nas roldanas, trilhos e travas.
+                                Corrigimos emperramentos, substituímos peças e recalibramos o sistema completo.
+                            </p>
+                            <div class="rg-maint-list">
+                                <div class="rg-maint-item">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+                                    Troca de roldanas e guias de trilho
+                                </div>
+                                <div class="rg-maint-item">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+                                    Ajuste e lubrificação dos painéis
+                                </div>
+                                <div class="rg-maint-item">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+                                    Substituição dos vidros
+                                </div>
+                                <div class="rg-maint-item">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+                                    Vedação de borrachas e juntas
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5511947965351?text=Olá!%20Preciso%20de%20manutenção%20no%20fechamento%20da%20minha%20sacada."
+                       target="_blank" rel="noopener noreferrer" class="rg-btn-primary mt-6 w-full justify-center">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        Chamar para sacada
+                    </a>
+                </div>
+
+                <div class="rg-maint-card">
+                    <div class="flex items-start gap-5">
+                        <div class="rg-maint-icon">
+                            <i data-lucide="settings-2" class="w-8 h-8"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="rg-maint-title">Mola de Chão</h3>
+                            <p class="rg-maint-desc">
+                                A mola de chão é o mecanismo que controla o fechamento automático de portas
+                                de vidro. Com o tempo, pode perder tensão, vazar óleo ou travar.
+                                Fazemos ajuste, regulagem e substituição completa.
+                            </p>
+                            <div class="rg-maint-list">
+                                <div class="rg-maint-item">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+                                    Regulagem de velocidade e tensão
+                                </div>
+                                <div class="rg-maint-item">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+                                    Troca de mola por marca equivalente ou superior
+                                </div>
+                                <div class="rg-maint-item">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+                                    Serviço em residências, comércios e condomínios
+                                </div>
+                                <div class="rg-maint-item">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+                                    Atendimento emergencial disponível
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5511947655931?text=Olá!%20Preciso%20de%20manutenção%20de%20mola%20de%20chão."
+                       target="_blank" rel="noopener noreferrer" class="rg-btn-primary mt-6 w-full justify-center">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        Chamar para mola de chão
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="mt-10">
+                <p class="text-center text-sm font-semibold uppercase tracking-widest text-body/60 mb-6">Outros serviços de manutenção</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="rg-mini-card">
+                        <i data-lucide="square" class="w-5 h-5 text-accent"></i>
+                        <span>Troca de vidros quebrados</span>
+                    </div>
+                    <div class="rg-mini-card">
+                        <i data-lucide="droplets" class="w-5 h-5 text-accent"></i>
+                        <span>Vedação e silicone</span>
+                    </div>
+                    <div class="rg-mini-card">
+                        <i data-lucide="lock" class="w-5 h-5 text-accent"></i>
+                        <span>Troca de Roldanas</span>
+                    </div>
+                    <div class="rg-mini-card">
+                        <i data-lucide="align-justify" class="w-5 h-5 text-accent"></i>
+                        <span>Troca dos Aluminios</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="rg-section bg-light">
+        <div class="rg-container">
+            <div class="rg-cta-box">
+                <div class="rg-cta-content">
+                    <p class="rg-eyebrow mb-3">Fale conosco agora</p>
+                    <h2 class="text-3xl md:text-4xl font-display font-black text-white leading-tight mb-4">
+                        Solicite seu orçamento<br>
+                        <span class="text-gold">100% gratuito</span>
+                    </h2>
+                    <p class="text-white/70 text-base mb-8 max-w-md">
+                        Atendemos na região de São Paulo. Resposta rápida pelo WhatsApp e Telefone—
+                        informe o tipo de serviço e o endereço para agendarmos uma visita.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                        <a href="https://wa.me/5511947965351?text=Olá!%20Quero%20um%20orçamento%20da%20Ruglass."
+                           target="_blank" rel="noopener noreferrer"
+                           class="rg-btn-gold rg-btn-lg">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            WhatsApp (Hugo)
+                        </a>
+                        <a href="https://wa.me/5511947655931?text=Olá!%20Quero%20um%20orçamento%20da%20Ruglass."
+                           target="_blank" rel="noopener noreferrer"
+                           class="rg-btn-gold rg-btn-lg">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            WhatsApp (Tatiane)
+                        </a>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                        <a href="mailto:ruglassvidracaria@gmail.com" class="rg-btn-outline rg-btn-lg">
+                            Enviar e-mail
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="rg-contact-item">
+                            <i data-lucide="phone" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            <div>
+                                <p class="text-white/50 text-xs mb-0.5">Telefone / WhatsApp</p>
+                                <p class="text-white font-medium">(11) 94796-5351</p>
+                                <p class="text-white font-medium">(11) 94765-5931</p>
+                            </div>
+                        </div>
+                        <div class="rg-contact-item">
+                            <i data-lucide="mail" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            <div>
+                                <p class="text-white/50 text-xs mb-0.5">E-mail</p>
+                                <p class="text-white font-medium break-all">ruglassvidracaria@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="rg-contact-item">
+                            <i data-lucide="clock" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            <div>
+                                <p class="text-white/50 text-xs mb-0.5">Horário</p>
+                                <p class="text-white font-medium">· Seg–Sex 8h–18h</p>
+                                <p class="text-white font-medium">· Sáb 8h–12h</p>
+                            </div>
+                        </div>
+                        <div class="rg-contact-item">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-gold flex-shrink-0"></i>
+                            <div>
+                                <p class="text-white/50 text-xs mb-0.5">Localização</p>
+                                <p class="text-white font-medium">R. Cantagalo, 2430 — Tatuapé, SP</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-white/10">
+                        <a href="https://www.instagram.com/ruglass.vidracaria?igsh=MTR4N2k3b2JkbGNncw=="
+                           target="_blank" class="inline-flex items-center gap-2 text-white/60 hover:text-gold transition-colors text-sm font-medium">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                            @ruglass.vidracaria
+                        </a>
+                    </div>
+                </div>
+
+                <div class="rg-cta-image">
+                    <img src="images/sacada2.png" alt="Sacada envidraçada de alta qualidade" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-primary py-8 border-t border-white/10">
+    <div class="rg-container">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <span class="rg-logo">RU<span>GLASS</span></span>
+            <p class="text-white/40 text-sm text-center">
+                &copy; <span id="year"></span> RUGLASS Vidraçaria — Todos os direitos reservados.
+            </p>
+            <a href="https://www.instagram.com/ruglass.vidracaria?igsh=MTR4N2k3b2JkbGNncw=="
+               target="_blank" class="text-white/40 hover:text-gold text-sm transition-colors flex items-center gap-1.5">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+                Instagram
+            </a>
+        </div>
+    </div>
+</footer>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --primary:   #0A1628;
+    --accent:    #1E5FC2;
+    --gold:      #E8A020;
+    --light:     #F7F9FC;
+    --mid:       #E2E8F0;
+    --body:      #3D4A5C;
+    --white:     #FFFFFF;
+    --radius:    10px;
+    --shadow-sm: 0 2px 8px rgba(10,22,40,.08);
+    --shadow-md: 0 6px 20px rgba(10,22,40,.12);
+    --shadow-lg: 0 16px 48px rgba(10,22,40,.16);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+/* ── Layout ─────────────────────────────────────────── */
+.rg-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.rg-section {
+    padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+    .rg-section { padding: 56px 0; }
+}
+
+/* ── Typography ─────────────────────────────────────── */
+.rg-eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.rg-eyebrow-dark {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.rg-section-header {
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.rg-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.875rem, 4vw, 3rem);
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1.15;
+    margin: 8px 0 16px;
+}
+
+.rg-section-sub {
+    font-size: 1.0625rem;
+    color: var(--body);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+    opacity: 0.8;
+}
+
+/* ── Logo ───────────────────────────────────────────── */
+.rg-logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.rg-logo span { color: var(--gold); }
+
+/* ── Header ─────────────────────────────────────────── */
+#header {
+    background: transparent;
+}
+
+.rg-header-scrolled {
+    background: var(--primary) !important;
+    box-shadow: 0 2px 20px rgba(0,0,0,.25);
+}
+
+/* Nav links */
+.rg-nav-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+    transition: color .2s;
+}
+
+.rg-nav-link:hover { color: var(--gold); }
+
+/* Mobile menu */
+.rg-menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--white);
+    padding: 4px;
+}
+
+.rg-mobile-menu {
+    background: var(--primary);
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.rg-mobile-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    transition: color .2s;
+}
+
+.rg-mobile-link:hover { color: var(--gold); }
+
+/* ── Buttons ─────────────────────────────────────────── */
+.rg-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 22px;
+    background: var(--accent);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    border: none;
+    cursor: pointer;
+}
+
+.rg-btn-primary:hover {
+    background: #1549a0;
+    transform: translateY(-1px);
+}
+
+.rg-btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 22px;
+    background: var(--gold);
+    color: var(--primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+}
+
+.rg-btn-gold:hover {
+    background: #d08f18;
+    transform: translateY(-1px);
+}
+
+.rg-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 22px;
+    background: transparent;
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    border: 2px solid rgba(255,255,255,.4);
+    text-decoration: none;
+    transition: border-color .2s, background .2s;
+}
+
+.rg-btn-outline:hover {
+    border-color: var(--white);
+    background: rgba(255,255,255,.08);
+}
+
+.rg-btn-lg {
+    padding: 14px 28px;
+    font-size: 1rem;
+    border-radius: 12px;
+}
+
+/* ── Hero ────────────────────────────────────────────── */
+.rg-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.rg-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            105deg,
+            rgba(10,22,40,.92) 0%,
+            rgba(10,22,40,.65) 55%,
+            rgba(10,22,40,.30) 100%
+    );
+}
+
+.rg-hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 5.5vw, 4rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.rg-hero-accent { color: var(--gold); }
+
+.rg-hero-sub {
+    font-size: 1.125rem;
+    color: rgba(255,255,255,.75);
+    line-height: 1.7;
+    max-width: 520px;
+}
+
+/* Trust bar */
+.rg-trust-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: rgba(255,255,255,.07);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    padding: 14px 24px;
+    width: fit-content;
+}
+
+.rg-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,.85);
+    white-space: nowrap;
+}
+
+.rg-trust-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(255,255,255,.2);
+}
+
+@media (max-width: 640px) {
+    .rg-trust-bar { gap: 14px; padding: 12px 16px; }
+    .rg-trust-divider { display: none; }
+    .rg-trust-item { font-size: 0.8rem; }
+}
+
+/* ── Service Cards (sacadas) ─────────────────────────── */
+.rg-service-card {
+    background: var(--white);
+    border: 1.5px solid var(--mid);
+    border-radius: 14px;
+    padding: 28px;
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+
+.rg-service-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+.rg-service-card--featured {
+    border-color: var(--accent);
+    background: linear-gradient(145deg, #f0f5ff, #ffffff);
+}
+
+.rg-service-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(30,95,194,.1);
+    color: var(--accent);
+    margin-bottom: 16px;
+}
+
+.rg-service-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 0 10px;
+}
+
+.rg-service-card p {
+    font-size: 0.9rem;
+    color: var(--body);
+    line-height: 1.65;
+    margin: 0 0 16px;
+}
+
+.rg-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rg-checklist li {
+    font-size: 0.85rem;
+    color: var(--body);
+    padding: 5px 0;
+    padding-left: 18px;
+    position: relative;
+}
+
+.rg-checklist li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* ── Benefits strip ──────────────────────────────────── */
+
+.rg-benefit-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    transition: all 0.3s ease;
+}
+
+.rg-benefit:hover .rg-benefit-icon {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.rg-benefits-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--mid);
+    border: 1px solid var(--mid);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.rg-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px;
+    background: var(--white);
+}
+
+.rg-benefit strong {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.rg-benefit p {
+    font-size: 0.825rem;
+    color: var(--body);
+    opacity: 0.75;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ── Maintenance Cards ───────────────────────────────── */
+.rg-maint-card {
+    position: relative;
+    background: var(--white);
+    border: 1.5px solid var(--mid);
+    border-radius: 14px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+}
+
+.rg-maint-badge {
+    position: absolute;
+    top: -12px;
+    left: 28px;
+    background: var(--gold);
+    color: var(--primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 20px;
+}
+
+.rg-maint-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: rgba(30,95,194,.1);
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.rg-maint-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 0 10px;
+}
+
+.rg-maint-desc {
+    font-size: 0.9rem;
+    color: var(--body);
+    line-height: 1.7;
+    margin: 0 0 16px;
+}
+
+.rg-maint-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rg-maint-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: var(--body);
+}
+
+/* Mini cards */
+.rg-mini-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    border: 1px solid var(--mid);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--primary);
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.rg-mini-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ── Diferenciais cards (dark bg) ────────────────────── */
+.rg-diff-card {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 14px;
+    padding: 24px;
+    transition: background .2s, border-color .2s;
+}
+
+.rg-diff-card:hover {
+    background: rgba(255,255,255,.1);
+    border-color: rgba(232,160,32,.4);
+}
+
+/* ── Gallery ─────────────────────────────────────────── */
+.rg-gallery {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr 0.8fr;
+    grid-template-rows: 300px 300px;
+    gap: 18px;
+}
+
+
+/* =========================
+   ITEM GERAL
+   ========================= */
+
+.rg-gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #111;
+    min-height: 0;
+}
+
+
+/* =========================
+   FOTO HORIZONTAL
+   ========================= */
+
+.rg-gallery-item--horizontal {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+
+/* =========================
+   FOTO VERTICAL
+   ========================= */
+
+.rg-gallery-item--vertical {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+
+
+/* =========================
+   VÍDEOS
+   ========================= */
+
+.rg-gallery-item--video-vertical {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.rg-gallery-item--video-horizontal {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+
+/* =========================
+   IMAGENS
+   ========================= */
+
+.rg-gallery-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+/* =========================
+   VÍDEOS
+   ========================= */
+
+.rg-gallery-item video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    background: #111;
+}
+
+
+/* =========================
+   OVERLAY
+   ========================= */
+
+.rg-gallery-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 24px;
+
+    color: #fff;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8),
+        rgba(0, 0, 0, 0)
+    );
+
+    pointer-events: none;
+}
+
+.rg-gallery-tag {
+    display: inline-block;
+
+    margin-bottom: 6px;
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+.rg-gallery-overlay h3 {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   HOVER
+   ========================= */
+
+.rg-gallery-item img,
+.rg-gallery-item video {
+    transition: transform 0.5s ease;
+}
+
+.rg-gallery-item:hover img {
+    transform: scale(1.04);
+}
+
+@media (max-width: 768px) {
+
+    .rg-gallery {
+        display: grid;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+
+        gap: 16px;
+    }
+
+    .rg-gallery-item--horizontal,
+    .rg-gallery-item--vertical,
+    .rg-gallery-item--video-vertical,
+    .rg-gallery-item--video-horizontal {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+
+    /* FOTO HORIZONTAL */
+    .rg-gallery-item--horizontal {
+        aspect-ratio: 16 / 9;
+    }
+
+
+    /* FOTO VERTICAL */
+    .rg-gallery-item--vertical {
+        aspect-ratio: 4 / 5;
+    }
+
+
+    /* VÍDEO CELULAR */
+    .rg-gallery-item--video-vertical {
+        aspect-ratio: 9 / 16;
+    }
+
+
+    /* VÍDEO HORIZONTAL */
+    .rg-gallery-item--video-horizontal {
+        aspect-ratio: 16 / 9;
+    }
+
+}
+
+/* ── CTA / Contact Box ───────────────────────────────── */
+.rg-cta-box {
+    background: var(--primary);
+    border-radius: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: var(--shadow-lg);
+}
+
+.rg-cta-content {
+    padding: 56px 48px;
+}
+
+.rg-cta-image {
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+}
+
+.rg-cta-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rg-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+    .rg-cta-box {
+        grid-template-columns: 1fr;
+    }
+    .rg-cta-image {
+        min-height: 240px;
+        order: -1;
+    }
+    .rg-cta-content {
+        padding: 36px 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .rg-cta-content { padding: 28px 20px; }
+}
+</style>
+
+<script>
+    lucide.createIcons();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('rg-header-scrolled');
+        } else {
+            header.classList.remove('rg-header-scrolled');
         }
+    });
 
-        menuBtn.addEventListener('click', toggleMenu);
+    // Mobile menu
+    const menuBtn  = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    let isMenuOpen = false;
 
-        // Fecha o menu ao clicar num link
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if(isMenuOpen) toggleMenu();
-            });
-        });
-    </script>
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+        mobileMenu.classList.toggle('hidden');
+        menuIcon.setAttribute('data-lucide', isMenuOpen ? 'x' : 'menu');
+        lucide.createIcons();
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => { if (isMenuOpen) toggleMenu(); });
+    });
+</script>
 </body>
 </html>
